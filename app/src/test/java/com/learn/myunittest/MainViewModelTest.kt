@@ -28,7 +28,7 @@ class MainViewModelTest {
 
     @Before  //<-Fungsinya untuk menginisialisasi method sebelum melakukan test.
     fun before() {
-        cuboidModel = mock(CuboidModel::class.java)
+        cuboidModel = mock(CuboidModel::class.java)  //<-mock(): fungsinya untuk membuat objek mock yang akan menggantikan objek yang asli.
         mainViewModel = MainViewModel(cuboidModel)
     }
 
@@ -63,10 +63,10 @@ class MainViewModelTest {
     //Pengujian Menggunakan MOCK
     @Test
     fun testMockVolume() {
-        `when`(mainViewModel.getVolume()).thenReturn(dummyVolume)
+        `when`(mainViewModel.getVolume()).thenReturn(dummyVolume) //<-thenReturn(): digunakan untuk memanipulasi output dari mock object.
         val volume = mainViewModel.getVolume()
-        verify(cuboidModel).getVolume()
-        assertEquals(dummyVolume, volume, 0.0001)
+        verify(cuboidModel).getVolume() //<-verify(): digunakan untuk memeriksa metode dipanggil dengan argumen yang diberikan
+        assertEquals(dummyVolume, volume, 0.0001)  //<-assertEquals(): fungsi ini merupakan fungsi dari JUnit yang digunakan untuk memvalidasi output yang diharapkan dan output yang sebenarnya.
     }
     @Test
     fun testMockCircumference() {
